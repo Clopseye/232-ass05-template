@@ -21,8 +21,29 @@
 /// default -> "unknown"
 
 std::string printLegacyData(LegacyData data, char type) {
-    // TODO: Implement switch/case for 'i', 'd', 'c' and default case
-    return "";
+    std::string result = "unknown";
+
+    if (type == 'i') {
+        result = std::format("{}", data.i);
+        return result;
+    }
+
+    if (type == 'd') {
+        result = std::format("{}", data.d);
+        return result;
+    }
+
+    if (type == 'c') {
+        if (data.cPtr != NULL) {
+            result = std::format("{}", data.cPtr);
+            return result;
+        }
+        else {
+            return result;
+        }
+    }
+
+    return result;
 }
 
 // ============================================================
