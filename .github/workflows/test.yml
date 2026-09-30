@@ -46,7 +46,7 @@ jobs:
     - name: Compile student code with pre-compiled test
       run: |
         # Kompilacja kodu studenta z pobranym testem i biblioteką Unity
-        g++ -Wall -m32 -Isrc -Ilib -Iinclude \
+        g++ -Wall -std=c++20 -m32 -Isrc -Ilib -Iinclude \
             src/code.cpp src/tests.cpp src/unity.c \
             tests/tests.o \
             -o run_tests
