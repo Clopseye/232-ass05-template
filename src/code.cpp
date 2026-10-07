@@ -42,7 +42,6 @@ std::string printLegacyData(LegacyData data, char type) {
             return result;
         }
     }
-
     return result;
 }
 
@@ -53,6 +52,11 @@ std::string printLegacyData(LegacyData data, char type) {
 /// Initializes a structNode with value, type indicator, and nullptr nextPtr.
 void initStructNode(structNode* nPtr, LegacyData val, char type) {
     // TODO: Check if nPtr is nullptr before assigning fields
+    if (nPtr == nullptr) return;
+
+    nPtr->value = val;
+    nPtr->typeData = type;
+    nPtr->nextPtr = nullptr;
 }
 
 /// Dynamically allocates two structNodes.

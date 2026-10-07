@@ -15,14 +15,18 @@
 /// Verify the returned string matches "42".
 void test_printLegacyData_int(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    union LegacyData m = { .i = 42 };
+    std::string result = printLegacyData(m, 'i');
+    TEST_ASSERT_TRUE("42" == result);
 }
 
 /// Create a LegacyData union with a double (3.14). Call printLegacyData.
 /// Verify the returned string matches "3.14".
 void test_printLegacyData_double(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    union LegacyData m = { .d = 3.14 };
+    std::string result = printLegacyData(m, 'd');
+    TEST_ASSERT_TRUE("3.14" == result);
 }
 
 // ============================================================
