@@ -15,7 +15,7 @@
 /// Verify the returned string matches "42".
 void test_printLegacyData_int(void) 
 {
-    union LegacyData m = { .i = 42 };
+    LegacyData m; m.i = 42;
     std::string result = printLegacyData(m, 'i');
     TEST_ASSERT_TRUE("42" == result);
 }
@@ -24,7 +24,7 @@ void test_printLegacyData_int(void)
 /// Verify the returned string matches "3.14".
 void test_printLegacyData_double(void) 
 {
-    union LegacyData m = { .d = 3.14 };
+    LegacyData m; m.d = 3.14;
     std::string result = printLegacyData(m, 'd');
     TEST_ASSERT_TRUE("3.14" == result);
 }
@@ -38,7 +38,16 @@ void test_printLegacyData_double(void)
 /// Clean up allocated memory.
 void test_createTwoStructNodes_links_correctly(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    structNode *head = createTwoStructNodes();
+
+    TEST_ASSERT_EQUAL_CHAR('i', head->typeData);
+    TEST_ASSERT_EQUAL(5, head->value.i);
+
+    TEST_ASSERT_EQUAL_CHAR('d', head->nextPtr->typeData);
+    TEST_ASSERT_FLOAT_WITHIN(0.001f, 3.14, head->nextPtr->value.d);
+
+    delete head->nextPtr;
+    delete head;
 }
 
 // ============================================================
@@ -50,7 +59,16 @@ void test_createTwoStructNodes_links_correctly(void)
 /// Clean up allocated memory.
 void test_createTwoClassNodes_links_correctly(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    classNode *head = createTwoClassNodes();
+    
+    TEST_ASSERT_EQUAL_CHAR('i', head->typeData);
+    TEST_ASSERT_EQUAL(5, head->value.i);
+
+    TEST_ASSERT_EQUAL_CHAR('d', head->nextPtr->typeData);
+    TEST_ASSERT_FLOAT_WITHIN(0.001f, 3.14, head->nextPtr->value.d);
+
+    delete head->nextPtr;
+    delete head;
 }
 
 // ============================================================

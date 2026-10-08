@@ -52,7 +52,9 @@ std::string printLegacyData(LegacyData data, char type) {
 /// Initializes a structNode with value, type indicator, and nullptr nextPtr.
 void initStructNode(structNode* nPtr, LegacyData val, char type) {
     // TODO: Check if nPtr is nullptr before assigning fields
-    if (nPtr == nullptr) return;
+    if (nPtr == nullptr) {
+        return;
+    }
 
     nPtr->value = val;
     nPtr->typeData = type;
@@ -66,7 +68,19 @@ void initStructNode(structNode* nPtr, LegacyData val, char type) {
 /// Returns pointer to Node 1.
 structNode* createTwoStructNodes() {
     // TODO: Allocate dynamically using new, initialize both nodes, link them, and return head
-    return nullptr;
+    structNode *node1 = new structNode;
+    LegacyData val1; val1.i = 5;
+
+    initStructNode(node1, val1, 'i');
+
+    structNode *node2 = new structNode;
+    LegacyData val2; val2.d = 3.14;
+
+    initStructNode(node2, val2, 'd');
+
+    node1->nextPtr = node2;
+
+    return node1;
 }
 
 // ============================================================
@@ -78,14 +92,23 @@ structNode* createTwoStructNodes() {
 
 // uncomment the following code to implement the classNode constructor
 
-// classNode::classNode(LegacyData val, char type) {
-//     // TODO: Assign value, typeData, and set nextPtr to nullptr
-// }
+classNode::classNode(LegacyData val, char type) {
+        this->value = val;
+        this->typeData = type;
+        this->nextPtr = nullptr;
+}
 
 /// Dynamically allocates two classNodes (int 5, double 3.14) and links them.
 classNode* createTwoClassNodes() {
+    LegacyData val1; val1.i = 5;
+    classNode* node1 = new classNode(val1, 'i');
+
+    LegacyData val2; val2.d = 3.14;
+    classNode* node2 = new classNode(val2, 'd');
+
+    node1->nextPtr = node2;
     // TODO: Allocate dynamically, link nodes, and return head
-    return nullptr;
+    return node1;
 }
 
 // ============================================================
