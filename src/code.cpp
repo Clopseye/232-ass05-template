@@ -29,7 +29,7 @@ std::string printLegacyData(LegacyData data, char type) {
     }
 
     if (type == 'd') {
-        result = std::format("{}", data.d);
+        result = std::format("{:.2f}", data.d);
         return result;
     }
 
@@ -39,7 +39,7 @@ std::string printLegacyData(LegacyData data, char type) {
             return result;
         }
         else {
-            return result;
+            return "nullptr";
         }
     }
     return result;
